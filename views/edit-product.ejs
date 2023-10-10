@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DCompras</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/header-footer.css">
+    <link rel="stylesheet" href="/css/start.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- Header start -->
+    <header class="page-header">
+        <div class="container">
+            <div class="header-wrap">
+                <a href="/" class="header-logo">
+                    <h1 style="color:rgb(224, 148, 6);">DCompras</h1>
+                </a>
+                <div class="header-user">
+                    <div class="user-sign-up">
+                        <a href="/">Volver al Sitio</a>
+                    </div>
+                    <div class="user-bag">
+                        <a href="#">
+                            <i class="bag-icon">
+                                <img src="images/bag-icon.jpg" alt="Bag icon">
+                            </i>
+                            Bolsa
+                            <span class="total-price"></span>
+                            <span class="amount">0</span>
+                        </a>
+                    </div>
+                </div>
+                <button class="toggle-menu">
+                    <span>toggle menu</span>
+                </button>
+            </div>
+            <nav class="header-nav">
+                <ul class="header-nav-list">
+                    <li class="header-nav-item"><a href="#">Viveres</a></li>
+                    <li class="header-nav-item"><a href="#">Café, Chocolate y Té</a></li>
+                    <li class="header-nav-item"><a href="#">Galletas, Dulces</a></li>
+                    <li class="header-nav-item"><a href="#">Panadería y Repostería</a></li>
+                    <li class="header-nav-item"><a href="#">Aves</a></li>
+                    <li class="header-nav-item"><a href="#">Carnicería</a></li>
+                    <li class="header-nav-item"><a href="#">Pescadería</a></li>
+                    <li class="header-nav-item"><a href="#">Bebidas</a></li>
+                    <li class="header-nav-item"><input class="header-nav-input" type="text" placeholder="Buscador..."></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Header end -->
+    <!-- Main start -->
+    <main class="page-main">
+        <div class="container">
+            <!-- Slider start -->
+            <section class="login">
+                <div class="formbold-main-wrapper">
+                    <div class="formbold-form-wrapper">      
+
+                      <form action="/admin/edit/<%= product.id %>" method="post" enctype="multipart/form-data">
+
+                        <div class="formbold-input-flex">
+                          <div>
+                            <label for="name" class="formbold-form-label">
+                              Nombre del Producto
+                            </label>
+                            <input type="text" name="name" id="name" value="<%= product.name %>" class="formbold-form-input" required/>
+                          </div>
+
+                          <div>
+                            <label for="price" class="formbold-form-label"> Precio </label>
+                            <input type="number" id="price" name="price" step="0.01" min="0" value="<%= product.price %>" required class="formbold-form-input"/>
+                          </div>
+                        </div>
+                  
+                        <div class="formbold-input-flex">
+                          <div>
+                            <label for="description" class="formbold-form-label">
+                              Descripción
+                            </label>
+                            <input type="text" name="description" id="description" value="<%= product.description %>" class="formbold-form-input" required/>
+                          </div>
+
+                          <div>
+                            <label for="quantity" class="formbold-form-label"> Cantidad </label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="<%= product.quantity %>" required class="formbold-form-input"/>
+                          </div>
+                        </div>
+                  
+                        <div class="formbold-input-flex">
+                            <div>
+                              <label for="promo" class="formbold-form-label">
+                                Promo (0-100)
+                              </label>
+                              <input type="number" id="promo" name="promo" min="0" max="100" value="<%= product.promo %>" required class="formbold-form-input"/>
+                            </div>
+  
+                            <div>
+                              <label for="image" class="formbold-form-label"> Imagen </label>
+                              <input type="file" id="img" name="img" accept="image/*" required class="formbold-form-input"/>
+                            </div>
+                          </div>
+                  
+                  
+                        <button type="submit" class="formbold-btn">Guardar Cambios</button>
+                      </form>
+                    </div>
+                  </div>
+                  <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+                    * {
+                      margin: 0;
+                      padding: 0;
+                      box-sizing: border-box;
+                    }
+                    body {
+                      font-family: 'Inter', sans-serif;
+                    }
+                    .formbold-mb-3 {
+                      margin-bottom: 15px;
+                    }
+                    .formbold-relative {
+                      position: relative;
+                    }
+                    .formbold-opacity-0 {
+                      opacity: 0;
+                    }
+                    .formbold-stroke-current {
+                      stroke: currentColor;
+                    }
+                    #supportCheckbox:checked ~ div span {
+                      opacity: 1;
+                    }
+                  
+                    .formbold-main-wrapper {
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      padding: 48px;
+                    }
+                  
+                    .formbold-form-wrapper {
+                      margin: 0 auto;
+                      max-width: 570px;
+                      width: 100%;
+                      background: white;
+                      padding: 40px;
+                    }
+                  
+                    .formbold-img {
+                      margin-bottom: 45px;
+                    }
+                  
+                    .formbold-form-title {
+                      margin-bottom: 30px;
+                    }
+                    .formbold-form-title h2 {
+                      font-weight: 600;
+                      font-size: 28px;
+                      line-height: 34px;
+                      color: #c96b14;
+                    }
+                    .formbold-form-title p {
+                      font-size: 16px;
+                      line-height: 24px;
+                      color: #536387;
+                      margin-top: 12px;
+                    }
+                  
+                    .formbold-input-flex {
+                      display: flex;
+                      gap: 20px;
+                      margin-bottom: 15px;
+                    }
+                    .formbold-input-flex > div {
+                      width: 50%;
+                    }
+                    .formbold-form-input {
+                      text-align: center;
+                      width: 100%;
+                      padding: 13px 22px;
+                      border-radius: 5px;
+                      border: 1px solid #dde3ec;
+                      background: #ffffff;
+                      font-weight: 500;
+                      font-size: 16px;
+                      color: #536387;
+                      outline: none;
+                      resize: none;
+                    }
+                    .formbold-form-input:focus {
+                      border-color: #ff8800;
+                      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+                    }
+                    .formbold-form-label {
+                      color: #536387;
+                      font-size: 14px;
+                      line-height: 24px;
+                      display: block;
+                      margin-bottom: 10px;
+                    }
+                  
+                    .formbold-input-checkbox {
+                      position: absolute;
+                      width: 1px;
+                      height: 1px;
+                      padding: 0;
+                      margin: -1px;
+                      overflow: hidden;
+                      clip: rect(0, 0, 0, 0);
+                      white-space: nowrap;
+                      border-width: 0;
+                    }
+                    .formbold-checkbox-inner {
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 20px;
+                      height: 20px;
+                      margin-right: 16px;
+                      margin-top: 2px;
+                      border: 0.7px solid #dde3ec;
+                      border-radius: 3px;
+                    }
+                  
+                    .formbold-btn {
+                      font-size: 16px;
+                      border-radius: 5px;
+                      padding: 14px 25px;
+                      border: none;
+                      font-weight: 500;
+                      background-color: #f1a737;
+                      color: white;
+                      cursor: pointer;
+                      margin-top: 25px;
+                    }
+                    .formbold-btn:hover {
+                      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+                    }
+                  </style>
+            </section>
+            <!-- Arrivals End -->
+        </div>
+    </main>
+    <!-- Main end -->
+    <!-- Footer start -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <div class="footer-links">
+                        <h3 class="footer-links-title">Links Rapidos</h3>
+                        <ul class="footer-links-list">
+                            <li><a href="#">Ubicación de la Tienda</a></li>
+                            <li><a href="#">Codigos Promocionales</a></li>
+                            <li><a href="#">Acerca de Nosotros</a></li>
+                            <li><a href="#">Soporte</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-care">
+                        <h3 class="footer-care-title">Servicio al Cliente</h3>
+                        <ul class="footer-care-list">
+                            <li><a href="#">Servicio al Cliente</a></li>
+                            <li><a href="#">Estado de mi Pedido</a></li>
+                            <li><a href="#">Términos y Condiciones</a></li>
+                            <li><a href="#">Delivery</a></li>
+                            <li><a href="#">Contactános</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-contact">
+                        <div class="footer-contact-twitter">
+                            <h3 class="footer-twitter-title">Preguntas</h3>
+                            <span class="footer-twitter-desc"><img src="images/twitter-icon-gray.jpg" alt="Twitter Icon">
+                                Tweet <a href="https://twitter.com/@dcompras">@dcompras</a></span>
+                        </div>
+                        <div class="footer-contact-phone">
+                            <h3 class="footer-phone-title">Ordenar por telefono</h3>
+                            <span class="footer-phone-desc"><a href="tel: 3024358217">3024358217</a></span>
+                        </div>
+                    </div>
+                    <div class="footer-social">
+                        <span class="footer-social-desc">Contamos con nuestro propio servicio de reparto 
+                            que opera en todo Bogotá</span>
+                        <span class="footer-social-links">
+                            <a href="#"><img src="images/fb-icon.jpg" alt="Facebook Icon"></a>
+                            <a href="#"><img src="images/twitter-icon-color.jpg" alt="Twitter Icon"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2023, Luis Carlos Martinez Guzman.</p>
+                <ul class="footer-info">
+                    <li><a href="#">Poli</a></li>
+                    <span class="footer-social-links-mobile">
+                        <a href="#"><img src="images/fb-icon.jpg" alt="Facebook Icon"></a>
+                        <a href="#"><img src="images/twitter-icon-color.jpg" alt="Twitter Icon"></a>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer end -->
+</body>
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita la recarga de la página
+    
+        var user = document.getElementsByName("user")[0].value;
+        var pass = document.getElementsByName("password")[0].value;
+    
+        // Envía la solicitud de inicio de sesión aquí
+        fetch('http://localhost:3000/check_login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user, pass })
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data === "success") {
+              alert("Inicio de sesión exitoso");
+              window.location.href = '/admin'; // Redirige al usuario a la página de administradores
+            } else {
+              alert("Inicio de sesión incorrecto");
+            }
+          })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+
+</html>

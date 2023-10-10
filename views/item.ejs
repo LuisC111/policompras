@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Productos</title>
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700"
+            rel="stylesheet">
+        <link rel="stylesheet" href="css/header-footer.css">
+        <link rel="stylesheet" href="css/item.css">
+    </head>
+
+    <body>
+        <!-- Header start -->
+        <header class="page-header">
+            <div class="container">
+                <div class="header-wrap">
+                    <a href="/" class="header-logo">
+                        <h1 style="color:rgb(224, 148, 6);">DCompras</h1>
+                    </a>
+                    <div class="header-user">
+                        <div class="user-sign-up">
+                            <a href="/login">Log-In Administrador</a>
+                        </div>
+                        <div class="user-bag">
+                            <a href="#">
+                                <i class="bag-icon">
+                                    <img src="images/bag-icon.jpg"
+                                        alt="Bag icon">
+                                </i>
+                                Bolsa
+                                <span class="total-price"></span>
+                                <span class="amount">0</span>
+                            </a>
+                        </div>
+                    </div>
+                    <button class="toggle-menu">
+                        <span>toggle menu</span>
+                    </button>
+                </div>
+                <nav class="header-nav">
+                    <ul class="header-nav-list">
+                        <li class="header-nav-item"><a href="#">Viveres</a></li>
+                        <li class="header-nav-item"><a href="#">Café, Chocolate
+                                y Té</a></li>
+                        <li class="header-nav-item"><a href="#">Galletas, Dulces</a></li>
+                        <li class="header-nav-item"><a href="#">Panadería y
+                                Repostería</a></li>
+                        <li class="header-nav-item"><a href="#">Aves</a></li>
+                        <li class="header-nav-item"><a href="#">Carnicería</a></li>
+                        <li class="header-nav-item"><a href="#">Pescadería</a></li>
+                        <li class="header-nav-item"><a href="#">Bebidas</a></li>
+                        <li class="header-nav-item"><input
+                                class="header-nav-input" type="text"
+                                placeholder="Buscador..."></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    <!-- Header end -->
+    <!-- Main start -->
+    <main class="page-main">
+        <div class="container">
+            <section class="toCatalog">
+                <a href="/catalog">Volver al Catálogo</a>
+            </section>
+
+            <section class="item">
+                <div class="item-preview">
+                    <img class="item-preview-big" src="images/<%= product.img %>" alt="${product.description}">
+                    <ul class="item-preview-list">
+                        <li class="item-preview-small-wrap active">
+                            <img class="item-preview-small" src="images/<%= product.img %>" alt="${product.description}">
+                        </li>
+                    </ul>
+                </div>
+                <div class="item-details">
+                    <h2 class="item-title"><%= product.name %></h2>
+                    <p class="item-desc">Descripción/Referencia: <%= product.description %> <br><b>En existencia: <%= product.quantity %></b></p>
+                    <span class="item-price">$<%= parseFloat(product.price.replace(',', '.')).toFixed(3) %></span>
+                    <% if (product.promo > 0 && product.promo <= 100) { %>
+                        <span class="item-price" style="text-decoration: line-through; color: red;">Precio original: $<%= parseFloat(product.price.replace(',', '.')).toFixed(3) %></span>
+                        <br>
+                        <span class="item-price">Precio con descuento: $<%= ((parseFloat(product.price.replace(',', '.')) - (parseFloat(product.price.replace(',', '.')) * (product.promo / 100)))).toFixed(3) %></span>
+                    <% } else { %>
+                        <span class="item-price">No hay promociones activas para este producto :(</span>
+                    <% } %>
+                    <button class="toBagBtn">Agregar a la Bolsa</button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+    <!-- Main end -->
+    <!-- Footer start -->
+    <footer class="page-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-left">
+                    <div class="footer-links">
+                        <h3 class="footer-links-title">Links Rapidos</h3>
+                        <ul class="footer-links-list">
+                            <li><a href="#">Ubicación de la Tienda</a></li>
+                            <li><a href="#">Codigos Promocionales</a></li>
+                            <li><a href="#">Acerca de Nosotros</a></li>
+                            <li><a href="#">Soporte</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-care">
+                        <h3 class="footer-care-title">Servicio al Cliente</h3>
+                        <ul class="footer-care-list">
+                            <li><a href="#">Servicio al Cliente</a></li>
+                            <li><a href="#">Estado de mi Pedido</a></li>
+                            <li><a href="#">Términos y Condiciones</a></li>
+                            <li><a href="#">Delivery</a></li>
+                            <li><a href="#">Contactános</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-contact">
+                        <div class="footer-contact-twitter">
+                            <h3 class="footer-twitter-title">Preguntas</h3>
+                            <span class="footer-twitter-desc"><img
+                                    src="images/twitter-icon-gray.jpg"
+                                    alt="Twitter Icon">
+                                Tweet us <a
+                                    href="https://twitter.com/@dcompras">@dcompras</a></span>
+                        </div>
+                        <div class="footer-contact-phone">
+                            <h3 class="footer-phone-title">Ordenar por
+                                telefono</h3>
+                            <span class="footer-phone-desc"><a
+                                    href="tel: 3024358217">3024358217</a></span>
+                        </div>
+                    </div>
+                    <div class="footer-social">
+                        <span class="footer-social-desc">Contamos con
+                            nuestro propio servicio de reparto
+                            que opera en todo Bogotá</span>
+                        <span class="footer-social-links">
+                            <a href="#"><img src="images/fb-icon.jpg"
+                                    alt="Facebook Icon"></a>
+                            <a href="#"><img
+                                    src="images/twitter-icon-color.jpg"
+                                    alt="Twitter Icon"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2023, Luis Carlos
+                    Martinez Guzman.</p>
+                <ul class="footer-info">
+                    <li><a href="#">Poli</a></li>
+                    <span class="footer-social-links-mobile">
+                        <a href="#"><img src="images/fb-icon.jpg"
+                                alt="Facebook Icon"></a>
+                        <a href="#"><img src="images/twitter-icon-color.jpg"
+                                alt="Twitter Icon"></a>
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer end -->
+    <script src="js/header.js"></script>
+</body>
+
+</html>

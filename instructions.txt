@@ -1,0 +1,9 @@
+npm -init y
+
+npm i mysql2 --save
+npm install express
+npm install body-parser
+npm install ejs
+npm install express-session
+npm install multer
+npm install sweetalert2
